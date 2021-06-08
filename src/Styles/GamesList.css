@@ -38,7 +38,9 @@
 .title {
   color: rgb(46, 46, 46);
 padding-top: 10px;
-
+height: 150px;
+display: flex;
+align-items: center;
 }
 .genre{
 margin-right: 5px;

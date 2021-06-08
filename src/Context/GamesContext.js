@@ -4,8 +4,8 @@ import React, { createContext, useState } from "react";
 export const GamesContext = createContext();
 
 export const GamesProvider = ({ children }) => {
-  let DATA = [];
-  const [games, setsetGames] = useState([]);
+  const [defaultGames, setDefaultGames] = useState([]);
+  const [games, setGames] = useState([]);
   const [colors, setColors] = useState([]);
 
   const generateColors = (data) => {
@@ -33,8 +33,10 @@ export const GamesProvider = ({ children }) => {
       .then((res) => {
         res.data.shift();
         generateColors(res.data);
-        setsetGames(res.data);
-        DATA = res.data;
+        setGames(res.data);
+        
+        // preserving a version of the data's oraginal sort
+        setDefaultGames(res.data);
       })
       .catch((err) => {
         // add a message to the user
@@ -48,6 +50,8 @@ export const GamesProvider = ({ children }) => {
         games,
         getGames,
         colors,
+        setGames,
+        defaultGames,
       }}
     >
       {children}

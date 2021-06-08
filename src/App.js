@@ -3,11 +3,11 @@ import { FilteringDataProvider } from "./Context/FilteringContext";
 import { GamesProvider } from "./Context/GamesContext";
 function App() {
   return (
-    <FilteringDataProvider>
-      <GamesProvider>
+    <GamesProvider>
+      <FilteringDataProvider>
         <HomeScreen />
-      </GamesProvider>
-    </FilteringDataProvider>
+      </FilteringDataProvider>
+    </GamesProvider>
   );
 }
 
