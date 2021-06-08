@@ -1,7 +1,8 @@
 import { useContext, useEffect } from "react";
 import { GamesContext } from "../Context/GamesContext";
-import SearchBar from "./SearchBar";
-import Sort from "./Sort";
+import SearchBar from "../Components/SearchBar";
+import Sort from "../Components/Sort";
+import GamesList from "../Components/GamesList";
 function HomeScreen() {
   const { getGames } = useContext(GamesContext);
   useEffect(() => {
@@ -11,7 +12,7 @@ function HomeScreen() {
     <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
       <SearchBar />
       <Sort />
-      {/* <Filters /> */}
+      <GamesList />
     </div>
   );
 }

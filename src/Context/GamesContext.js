@@ -6,7 +6,25 @@ export const GamesContext = createContext();
 export const GamesProvider = ({ children }) => {
   let DATA = [];
   const [games, setsetGames] = useState([]);
+  const [colors, setColors] = useState([]);
 
+  const generateColors = (data) => {
+    let generes = [];
+    let colors = {};
+    data.forEach((element) => {
+      let elementGenres = element.genre.replace(/\s/g, "").split(",");
+      elementGenres.forEach((genre) => {
+        if (!generes.includes(genre) && genre !== "") {
+          let r =  110 + Math.floor(Math.random() * (255 - 110 + 1));
+          let g =  110 + Math.floor(Math.random() * (255 - 110 + 1));
+          let b =  110 + Math.floor(Math.random() * (255 - 110 + 1));
+
+          colors[genre] = `rgb(${r},${g},${b})`;
+        }
+      });
+    });
+    setColors(colors);
+  };
   const getGames = () => {
     axios
       .get(
@@ -14,6 +32,8 @@ export const GamesProvider = ({ children }) => {
       )
       .then((res) => {
         res.data.shift();
+        generateColors(res.data);
+
         setsetGames(res.data);
         DATA = res.data;
       })
@@ -28,6 +48,7 @@ export const GamesProvider = ({ children }) => {
       value={{
         games,
         getGames,
+        colors,
       }}
     >
       {children}

@@ -4,7 +4,7 @@
   height: 14vw;
   max-height: 170px;
   justify-content: center;
-  background-color: rgb(109, 40, 44);
+  background-color: rgb(61, 58, 59);
   border-top-left-radius: 1cm;
   border-top-right-radius: 1cm;
 }
@@ -34,7 +34,7 @@
 .input:focus {
   background-color: white;
   border-style: solid;
-  border-color: rosybrown;
+  border-color: rgb(180, 88, 88);
   border-width: 2;
 }
 

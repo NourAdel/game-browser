@@ -1,0 +1,97 @@
+.gamesContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 30px;
+  width: 90%;
+  align-self: center;
+  justify-content: center;
+}
+.card {
+    padding:20px;
+  border-width:1mm;
+  border-style: solid;
+  border-top-left-radius: 1cm;
+  border-top-right-radius: 1cm;  
+  margin: 15px;
+  width: 25%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  --angle: 20deg;
+
+  border-image: linear-gradient(
+      var(--angle),
+      rgb(224, 83, 83),
+      rgb(177, 177, 144),
+      rgb(180, 243, 180),
+      rgb(167, 231, 231),
+      rgb(142, 142, 216),
+      rgb(221, 122, 221)
+    )
+    1;
+
+  animation: 10s rotate linear infinite;
+  justify-content: center;
+}
+.title {
+  color: rgb(46, 46, 46);
+padding-top: 10px;
+
+}
+.genre{
+margin-right: 5px;
+margin-left: 5px;
+padding: 7px;
+border-radius: 1cm;
+color: rgb(24, 23, 21);
+font-size: 14px;
+
+}
+.prop{
+display: flex;
+flex-direction: row;
+align-items:center;
+}
+.thumbIcon{
+    align-self: center;
+    margin-left: 10px;
+}
+.info{
+    color: gray;
+}
+.editorsChoice{
+    border-color: rgb(211, 208, 208);
+    width: 100%;
+    display: flex;
+    height: 20px;
+    border-width: 0.5mm;
+    border-style: solid;
+    border-right-width: 0cm;
+    border-left-width: 0cm;
+    border-bottom-width: 0cm;
+    padding-top: 15px;
+
+
+
+
+}
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@media screen and (max-width:1033px) {
+    .card{
+      width: 290px;
+    }
+    
+  }
