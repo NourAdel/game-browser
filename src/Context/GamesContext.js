@@ -15,9 +15,9 @@ export const GamesProvider = ({ children }) => {
       let elementGenres = element.genre.replace(/\s/g, "").split(",");
       elementGenres.forEach((genre) => {
         if (!generes.includes(genre) && genre !== "") {
-          let r =  110 + Math.floor(Math.random() * (255 - 110 + 1));
-          let g =  110 + Math.floor(Math.random() * (255 - 110 + 1));
-          let b =  110 + Math.floor(Math.random() * (255 - 110 + 1));
+          let r = 110 + Math.floor(Math.random() * (255 - 110 + 1));
+          let g = 110 + Math.floor(Math.random() * (255 - 110 + 1));
+          let b = 110 + Math.floor(Math.random() * (255 - 110 + 1));
 
           colors[genre] = `rgb(${r},${g},${b})`;
         }
@@ -33,7 +33,6 @@ export const GamesProvider = ({ children }) => {
       .then((res) => {
         res.data.shift();
         generateColors(res.data);
-
         setsetGames(res.data);
         DATA = res.data;
       })

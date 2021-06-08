@@ -7,6 +7,7 @@
   background-color: rgb(61, 58, 59);
   border-top-left-radius: 1cm;
   border-top-right-radius: 1cm;
+  flex-direction: row;
 }
 .searchBar {
   width: 50%;
@@ -45,4 +46,26 @@
   background-color: transparent;
   border-style: none;
   cursor: pointer;
+}
+
+.resetIcon{
+  position: absolute;
+  margin: auto;
+  left:68%;
+  
+
+
+}
+@media screen and (max-width:800px) {
+  .searchBar{
+    width: 70%;
+    align-self: flex-start;
+  }
+  .icon{
+    left:18%
+  }
+  .resetIcon{
+    left:72%
+  }
+  
 }

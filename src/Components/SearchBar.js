@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { FilteringContext } from "../Context/FilteringContext";
 import SearchIcon from "@material-ui/icons/Search";
+import CloseIcon from "@material-ui/icons/Close";
 import "../Styles/SearchBar.css";
 function SearchBar() {
   const { searchTerm, setSearchTerm } = useContext(FilteringContext);
@@ -31,6 +32,17 @@ function SearchBar() {
           className="input"
           value={searchTerm}
         />
+        {searchTerm!=='' && (
+          <button
+            className="icon resetIcon"
+            onClick={(e) => {
+              setSearchTerm("");
+            }}
+          >
+            <CloseIcon />
+          </button>
+        )}
+       
       </div>
     </div>
   );
