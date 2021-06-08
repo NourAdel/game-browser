@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
-import { FelteringContext } from "../Context/FelteringContext";
+import { FilteringContext } from "../Context/FilteringContext";
 import SearchIcon from "@material-ui/icons/Search";
 import "../Styles/SearchBar.css";
 function SearchBar() {
-  const { searchTerm, setSearchTerm } = useContext(FelteringContext);
-
-  
+  const { searchTerm, setSearchTerm } = useContext(FilteringContext);
 
   return (
     <div className="container">

@@ -1,13 +1,13 @@
 import HomeScreen from "./Components/HomeScreen";
-import { FelteringDataProvider } from "./Context/FelteringContext";
+import { FilteringDataProvider } from "./Context/FilteringContext";
 import { GamesProvider } from "./Context/GamesContext";
 function App() {
   return (
-    <FelteringDataProvider>
+    <FilteringDataProvider>
       <GamesProvider>
           <HomeScreen />
       </GamesProvider>
-    </FelteringDataProvider>
+    </FilteringDataProvider>
   );
 }
 

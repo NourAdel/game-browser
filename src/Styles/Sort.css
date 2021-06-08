@@ -1,0 +1,13 @@
+.outterSortContainer {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  font-size: 18;
+  justify-content: center;
+  align-self: flex-end;
+  margin-right: 50px;
+}
+.sortContainer {
+  align-self: flex-end;
+  margin: 20px;
+}

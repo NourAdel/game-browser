@@ -1,0 +1,8 @@
+.filtersContainer{
+    width: 15%;
+    background-color: turquoise;
+    padding: 20px;
+    margin-top: 15px;
+    justify-content: space-between;
+    display: flex;
+}
