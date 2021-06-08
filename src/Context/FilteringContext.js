@@ -29,6 +29,17 @@ export const FilteringDataProvider = ({ children }) => {
   const [sortByValue, setSortByValue] = useState("Default");
   const [sortOpen, setSortOpen] = useState(false);
 
+  const search = () => {
+    let newArray = [...defaultGames];
+    newArray = newArray.filter(function (game) {
+      return game.title.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    setGames(newArray);
+  };
+
+  const reset = () => {
+    setGames([...defaultGames]);
+  };
   const sort = (id) => {
     switch (id) {
       //default
@@ -138,6 +149,8 @@ export const FilteringDataProvider = ({ children }) => {
         handleSortToggle,
         handleSortClose,
         SORTBYVALUES,
+        search,
+        reset,
       }}
     >
       {children}

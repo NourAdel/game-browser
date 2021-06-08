@@ -18,6 +18,7 @@ function GamesList() {
       );
     });
   };
+
   const renderGames = () => {
     return games.map((game, index) => {
       return (
@@ -28,13 +29,19 @@ function GamesList() {
               {renderGenres(game)}
             </h2>
           </div>
-          <div className="prop editorsChoice" >
+          <div className="prop editorsChoice">
             <h4>Editors choice? </h4>
             <div className="thumbIcon">
-              {game.editors_choice == "Y" ? <ThumbUpAlt /> : <ThumbDownAlt />}
+              {game.editors_choice === "Y" ? <ThumbUpAlt /> : <ThumbDownAlt />}
             </div>
           </div>
-          <div style={{ flexDirection: "row" , display:"flex", justifyContent:"space-between"}}>
+          <div
+            style={{
+              flexDirection: "row",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
             <div className="prop">
               <SportsEsportsIcon />
               <h4 className="thumbIcon info">{game.platform}</h4>
@@ -44,8 +51,6 @@ function GamesList() {
               <h4 className="thumbIcon info"> {game.score}/10</h4>
             </div>
           </div>
-
-        
         </div>
       );
     });

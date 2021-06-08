@@ -11,9 +11,12 @@
   align-self: flex-end;
   margin: 20px;
 }
-@media screen and (max-width:800px) {
-  .outterSortContainer{
-    display: none;
+@media screen and (max-width: 800px) {
+  .outterSortContainer {
+    width: 100%;
+    margin-right: 10px;
+    margin-bottom: -50px;
+    align-self: center;
+
   }
-  
 }

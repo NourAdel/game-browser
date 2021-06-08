@@ -4,7 +4,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 import "../Styles/SearchBar.css";
 function SearchBar() {
-  const { searchTerm, setSearchTerm } = useContext(FilteringContext);
+  const { searchTerm, setSearchTerm, search } = useContext(FilteringContext);
 
   return (
     <div className="container">
@@ -13,7 +13,7 @@ function SearchBar() {
         <button
           className="icon"
           onClick={(e) => {
-            //apply search}
+            search();
           }}
         >
           <SearchIcon />
@@ -24,7 +24,7 @@ function SearchBar() {
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyPress={(event) => {
             if (event.key === "Enter") {
-              // apply search
+              search();
             }
           }}
           placeholder={"Search..."}
@@ -32,7 +32,7 @@ function SearchBar() {
           className="input"
           value={searchTerm}
         />
-        {searchTerm!=='' && (
+        {searchTerm !=="" && (
           <button
             className="icon resetIcon"
             onClick={(e) => {
@@ -42,7 +42,6 @@ function SearchBar() {
             <CloseIcon />
           </button>
         )}
-       
       </div>
     </div>
   );
