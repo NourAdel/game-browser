@@ -1,10 +1,12 @@
-
-
+import SearchBar from "./Components/SearchBar";
+import { FelteringDataProvider } from "./Context/FelteringContext";
 function App() {
   return (
-    <div className="App">
-     app
-    </div>
+    <FelteringDataProvider>
+      <div style={{ width: "100%" }}>
+        <SearchBar />
+      </div>
+    </FelteringDataProvider>
   );
 }
 
