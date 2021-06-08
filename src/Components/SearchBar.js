@@ -4,6 +4,9 @@ import SearchIcon from "@material-ui/icons/Search";
 import "../Styles/SearchBar.css";
 function SearchBar() {
   const { searchTerm, setSearchTerm } = useContext(FelteringContext);
+
+  
+
   return (
     <div className="container">
       <div className="searchBar">

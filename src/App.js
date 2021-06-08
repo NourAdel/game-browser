@@ -1,11 +1,12 @@
-import SearchBar from "./Components/SearchBar";
+import HomeScreen from "./Components/HomeScreen";
 import { FelteringDataProvider } from "./Context/FelteringContext";
+import { GamesProvider } from "./Context/GamesContext";
 function App() {
   return (
     <FelteringDataProvider>
-      <div style={{ width: "100%" }}>
-        <SearchBar />
-      </div>
+      <GamesProvider>
+          <HomeScreen />
+      </GamesProvider>
     </FelteringDataProvider>
   );
 }
