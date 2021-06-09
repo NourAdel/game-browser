@@ -1,2 +1,2 @@
 - Filters section to filter games by: platform, score range and editors choice.
-- Adding a pagination component to help browse the games should the number of the data entries increases.
+- A pagination component to help browse the games should the number of the data entries increases.
