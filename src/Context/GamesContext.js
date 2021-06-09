@@ -8,6 +8,7 @@ export const GamesProvider = ({ children }) => {
   const [games, setGames] = useState([]);
   const [colors, setColors] = useState([]);
 
+  // generates a random bright color for every unique genre
   const generateColors = (data) => {
     let generes = [];
     let colors = {};
@@ -25,6 +26,7 @@ export const GamesProvider = ({ children }) => {
     });
     setColors(colors);
   };
+
   const getGames = () => {
     axios
       .get(
@@ -34,7 +36,7 @@ export const GamesProvider = ({ children }) => {
         res.data.shift();
         generateColors(res.data);
         setGames(res.data);
-        
+
         // preserving a version of the data's oraginal sort
         setDefaultGames(res.data);
       })

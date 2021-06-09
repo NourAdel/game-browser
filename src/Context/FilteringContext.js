@@ -28,13 +28,42 @@ export const FilteringDataProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortByValue, setSortByValue] = useState("Default");
   const [sortOpen, setSortOpen] = useState(false);
+  const [activeSuggestion, setActiveSuggestion] = useState(0);
+  const [filteredSuggestions, setFilterdSuggestions] = useState([]);
 
+  const onTextChange = (e) => {
+    setSearchTerm(e);
+    if (e !== "") {
+      let newArray = [...defaultGames];
+      newArray = newArray.filter(function (game) {
+        return game.title.toLowerCase().includes(e.toLowerCase());
+      });
+      setFilterdSuggestions(newArray);
+    } else {
+      setFilterdSuggestions([]);
+    }
+  };
+const onKeyPress=(e)=>{
+  if (e.key === "Enter") {
+    search();
+  }
+}
+
+  const resetSearch = () => {
+    setSearchTerm("");
+    setGames(defaultGames);
+    setSortByValue("Default");
+    setFilterdSuggestions([]);
+  };
   const search = () => {
     let newArray = [...defaultGames];
     newArray = newArray.filter(function (game) {
       return game.title.toLowerCase().includes(searchTerm.toLowerCase());
     });
+    setSortByValue("Default");
     setGames(newArray);
+    setFilterdSuggestions([]);
+
   };
 
   const reset = () => {
@@ -120,7 +149,6 @@ export const FilteringDataProvider = ({ children }) => {
 
   const handleSortClose = (event) => {
     const { id } = event.target;
-    debugger;
     if (id) setSortByValue(SORTBYVALUES[id]);
     sort(parseInt(id));
     setSortOpen(false);
@@ -149,8 +177,11 @@ export const FilteringDataProvider = ({ children }) => {
         handleSortToggle,
         handleSortClose,
         SORTBYVALUES,
-        search,
+        onKeyPress,
         reset,
+        resetSearch,
+        filteredSuggestions,
+        onTextChange,
       }}
     >
       {children}

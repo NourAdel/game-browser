@@ -12,7 +12,7 @@ function GamesList() {
     let elementGenres = element.genre.replace(/\s/g, "").split(",");
     return elementGenres.map((genre) => {
       return (
-        <span className="genre" style={{ backgroundColor: colors[genre] }}>
+        <span key={genre+element.id} className="genre" style={{ backgroundColor: colors[genre] }}>
           {genre}
         </span>
       );
