@@ -1,4 +1,4 @@
 
 
-# `yarn` and # `yarn` to run
+# `yarn` and  `yarn start` to run
 
