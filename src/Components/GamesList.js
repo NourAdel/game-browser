@@ -1,12 +1,16 @@
 import { useContext } from "react";
 import { GamesContext } from "../Context/GamesContext";
+
+// components
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+
+//icons
 import ThumbUpAlt from "@material-ui/icons/ThumbUpAlt";
 import ThumbDownAlt from "@material-ui/icons/ThumbDownAlt";
 import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import ScoreIcon from "@material-ui/icons/Score";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert";
 
 import "../Styles/GamesList.css";
 
@@ -72,16 +76,21 @@ function GamesList() {
 
   return (
     <div className="gamesContainer">
-      {loader ? (
-        <CircularProgress
-          color="secondary"
-          className="loader"
-          style={{ marginTop: "20%" }}
-        />
-      ) : (
-        renderGames()
-      )}
+      {
+        // in case of 'LOADING'
+        loader ? (
+          <CircularProgress
+            color="secondary"
+            className="loader"
+            style={{ marginTop: "20%" }}
+          />
+        ) : (
+          // in case of SUCCESS
+          renderGames()
+        )
+      }
 
+      {/* in case of FAILURE */}
       <Snackbar
         open={errorMessage}
         autoHideDuration={6000}
@@ -93,6 +102,6 @@ function GamesList() {
       </Snackbar>
     </div>
   );
-} 
+}
 
 export default GamesList;

@@ -78,7 +78,6 @@ export const FilteringDataProvider = ({ children }) => {
 
   const sort = (id) => {
     switch (id) {
-
       //default
       case 0:
         filteredSuggestions.length

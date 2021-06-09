@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import { FilteringContext } from "../Context/FilteringContext";
+
+// icons
 import CloseIcon from "@material-ui/icons/Close";
+
 import "../Styles/SearchBar.css";
 
 function SearchBar() {
@@ -26,10 +29,12 @@ function SearchBar() {
       );
     });
   };
+
   return (
     <div className="container">
       <div className="searchBarContainer">
         <div className="searchBar">
+          {/* search input */}
           <input
             onChange={(e) => onTextChange(e.target.value)}
             onKeyDown={(event) => {
@@ -64,6 +69,7 @@ function SearchBar() {
           )}
         </div>
 
+        {/* autocomplete component */}
         <div className="autocompleteContainer">{renderSuggestedItems()}</div>
       </div>
     </div>

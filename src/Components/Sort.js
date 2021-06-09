@@ -1,4 +1,8 @@
 import { useContext, useRef } from "react";
+import { FilteringContext } from "../Context/FilteringContext";
+import { GamesContext } from "../Context/GamesContext";
+
+//components
 import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
@@ -6,9 +10,8 @@ import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
+
 import "../Styles/Sort.css";
-import { FilteringContext } from "../Context/FilteringContext";
-import { GamesContext } from "../Context/GamesContext";
 
 function Sort() {
   const {
@@ -20,26 +23,29 @@ function Sort() {
     handleSortClose,
   } = useContext(FilteringContext);
 
-  const {loader}= useContext(GamesContext)
+  const { loader } = useContext(GamesContext);
+
   // refrence to the button triggering the menu
   const anchorRef = useRef(null);
 
-  // render sorting options
   const renderOptions = () => {
     return SORTBYVALUES.map((value, index) => {
       return (
-        <MenuItem onClick={handleSortClose} id={index} >
+        <MenuItem onClick={handleSortClose} id={index}>
           {value}
         </MenuItem>
       );
     });
   };
 
-  if (loader) return null
+  // in case of LOADING
+  if (loader) return null;
+
   return (
     <div className="outterSortContainer">
       Sort By
       <div className="sortContainer">
+        {/*  triggering button */}
         <Button
           ref={anchorRef}
           aria-controls={sortOpen ? "menu-list-grow" : undefined}
@@ -48,6 +54,8 @@ function Sort() {
         >
           <h4> {sortByValue}</h4>
         </Button>
+
+        {/* drop down list  */}
         <Popper
           open={sortOpen}
           anchorEl={anchorRef.current}
