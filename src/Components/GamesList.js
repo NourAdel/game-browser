@@ -5,10 +5,18 @@ import ThumbDownAlt from "@material-ui/icons/ThumbDownAlt";
 import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import ScoreIcon from "@material-ui/icons/Score";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 import "../Styles/GamesList.css";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 function GamesList() {
-  const { games, colors, loader } = useContext(GamesContext);
+  const { games, colors, loader, errorMessage, setErrorMessage } =
+    useContext(GamesContext);
 
   const renderGenres = (element) => {
     let elementGenres = element.genre.replace(/\s/g, "").split(",");
@@ -73,8 +81,18 @@ function GamesList() {
       ) : (
         renderGames()
       )}
+
+      <Snackbar
+        open={errorMessage}
+        autoHideDuration={6000}
+        onClose={() => setErrorMessage(false)}
+      >
+        <Alert onClose={() => setErrorMessage(false)} severity="error">
+          An Error occured, Please Try again!
+        </Alert>
+      </Snackbar>
     </div>
   );
-}
+} 
 
 export default GamesList;
