@@ -4,15 +4,21 @@ import ThumbUpAlt from "@material-ui/icons/ThumbUpAlt";
 import ThumbDownAlt from "@material-ui/icons/ThumbDownAlt";
 import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import ScoreIcon from "@material-ui/icons/Score";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 import "../Styles/GamesList.css";
 function GamesList() {
-  const { games, colors } = useContext(GamesContext);
+  const { games, colors, loader } = useContext(GamesContext);
 
   const renderGenres = (element) => {
     let elementGenres = element.genre.replace(/\s/g, "").split(",");
     return elementGenres.map((genre) => {
       return (
-        <span key={genre+element.id} className="genre" style={{ backgroundColor: colors[genre] }}>
+        <span
+          key={genre + element.id}
+          className="genre"
+          style={{ backgroundColor: colors[genre] }}
+        >
           {genre}
         </span>
       );
@@ -56,7 +62,19 @@ function GamesList() {
     });
   };
 
-  return <div className="gamesContainer">{renderGames()}</div>;
+  return (
+    <div className="gamesContainer">
+      {loader ? (
+        <CircularProgress
+          color="secondary"
+          className="loader"
+          style={{ marginTop: "20%" }}
+        />
+      ) : (
+        renderGames()
+      )}
+    </div>
+  );
 }
 
 export default GamesList;

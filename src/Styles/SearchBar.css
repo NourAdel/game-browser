@@ -82,7 +82,7 @@
   border-left: solid 0.5mm rgb(223, 219, 219);
   display: none;
 }
-@media screen and (max-width: 1033px) {
+@media screen and (max-width:750px) {
   .searchBar {
     width: 70%;
   }

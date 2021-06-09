@@ -8,6 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import "../Styles/Sort.css";
 import { FilteringContext } from "../Context/FilteringContext";
+import { GamesContext } from "../Context/GamesContext";
 
 function Sort() {
   const {
@@ -19,6 +20,7 @@ function Sort() {
     handleSortClose,
   } = useContext(FilteringContext);
 
+  const {loader}= useContext(GamesContext)
   // refrence to the button triggering the menu
   const anchorRef = useRef(null);
 
@@ -33,6 +35,7 @@ function Sort() {
     });
   };
 
+  if (loader) return null
   return (
     <div className="outterSortContainer">
       Sort By

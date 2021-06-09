@@ -7,6 +7,7 @@ export const GamesProvider = ({ children }) => {
   const [defaultGames, setDefaultGames] = useState([]);
   const [games, setGames] = useState([]);
   const [colors, setColors] = useState([]);
+  const [loader, setLoader]= useState(true)
 
   // generates a random bright color for every unique genre
   const generateColors = (data) => {
@@ -39,6 +40,8 @@ export const GamesProvider = ({ children }) => {
 
         // preserving a version of the data's oraginal sort
         setDefaultGames(res.data);
+
+        setLoader(false)
       })
       .catch((err) => {
         // add a message to the user
@@ -54,6 +57,7 @@ export const GamesProvider = ({ children }) => {
         colors,
         setGames,
         defaultGames,
+        loader
       }}
     >
       {children}
