@@ -13,59 +13,44 @@
   width: 50%;
   display: flex;
   flex-direction: row;
-  height: 14vw;
-  max-height: 70px;
+  height: 3vw;
+  min-height: 35px;
   margin: auto;
   border-radius: 100;
   outline-style: none;
   border-style: none;
-
+  padding-left: 10px;
   justify-content: center;
   align-items: center;
+  background-color: white;
+  border-radius: 0.5cm;
+  outline-style: none;
+  border-style: none;
 }
 .input {
   border-radius: 0.5cm;
   outline-style: none;
   border-style: none;
   height: 60%;
-  width: 80%;
-  padding-left:50px;
+  width: 95%;
+  padding-right: 20px;
   font-size: 18px;
 }
-.input:focus {
+.searchBar:hover {
   background-color: white;
   border-style: solid;
   border-color: rgb(180, 88, 88);
   border-width: 2;
 }
 
-.icon {
-  position: absolute;
-  margin: auto;
-  left: 29.5%;
-  background-color: transparent;
+.resetIcon {
   border-style: none;
-  cursor: pointer;
+  outline-style: none;
+  background-color: transparent;
 }
-
-.resetIcon{
-  position: absolute;
-  margin: auto;
-  left:68%;
-  
-
-
-}
-@media screen and (max-width:800px) {
-  .searchBar{
+@media screen and (max-width: 800px) {
+  .searchBar {
     width: 70%;
     align-self: flex-start;
   }
-  .icon{
-    left:20%
-  }
-  .resetIcon{
-    left:72%
-  }
-  
 }

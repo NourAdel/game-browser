@@ -9,17 +9,6 @@ function SearchBar() {
   return (
     <div className="container">
       <div className="searchBar">
-        {/* icon */}
-        <button
-          className="icon"
-          onClick={(e) => {
-            search();
-          }}
-        >
-          <SearchIcon />
-        </button>
-
-        {/* input */}
         <input
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyPress={(event) => {
@@ -32,7 +21,8 @@ function SearchBar() {
           className="input"
           value={searchTerm}
         />
-        {searchTerm !=="" && (
+        {/* clear button */}
+        {searchTerm !== "" && (
           <button
             className="icon resetIcon"
             onClick={(e) => {
