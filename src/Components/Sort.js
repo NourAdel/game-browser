@@ -26,7 +26,7 @@ function Sort() {
   const renderOptions = () => {
     return SORTBYVALUES.map((value, index) => {
       return (
-        <MenuItem onClick={handleSortClose} id={index}>
+        <MenuItem onClick={handleSortClose} id={index} >
           {value}
         </MenuItem>
       );

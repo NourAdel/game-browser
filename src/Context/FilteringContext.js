@@ -28,9 +28,20 @@ export const FilteringDataProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortByValue, setSortByValue] = useState("Default");
   const [sortOpen, setSortOpen] = useState(false);
-  const [activeSuggestion, setActiveSuggestion] = useState(0);
   const [filteredSuggestions, setFilterdSuggestions] = useState([]);
 
+  // when clicking on a suggestion from the autocomplete menu
+  const chooseSuggestion = (item) => {
+    let newArray = [...defaultGames];
+    newArray = newArray.filter(function (game) {
+      return game.title.toLowerCase() === item.title.toLowerCase();
+    });
+    setSortByValue("Default");
+    setGames(newArray);
+    setFilterdSuggestions([]);
+  };
+
+  // on search input changes
   const onTextChange = (e) => {
     setSearchTerm(e);
     if (e !== "") {
@@ -40,41 +51,41 @@ export const FilteringDataProvider = ({ children }) => {
       });
       setFilterdSuggestions(newArray);
     } else {
+      resetSearch();
+    }
+  };
+
+  // on pressing ENTER
+  const onKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      let newArray = [...defaultGames];
+      newArray = newArray.filter(function (game) {
+        return game.title.toLowerCase().includes(searchTerm.toLowerCase());
+      });
+      setSortByValue("Default");
+      setGames(newArray);
       setFilterdSuggestions([]);
     }
   };
-const onKeyPress=(e)=>{
-  if (e.key === "Enter") {
-    search();
-  }
-}
 
+  // reseting the list to no filters
   const resetSearch = () => {
     setSearchTerm("");
     setGames(defaultGames);
     setSortByValue("Default");
     setFilterdSuggestions([]);
   };
-  const search = () => {
-    let newArray = [...defaultGames];
-    newArray = newArray.filter(function (game) {
-      return game.title.toLowerCase().includes(searchTerm.toLowerCase());
-    });
-    setSortByValue("Default");
-    setGames(newArray);
-    setFilterdSuggestions([]);
 
-  };
-
-  const reset = () => {
-    setGames([...defaultGames]);
-  };
   const sort = (id) => {
     switch (id) {
+
       //default
       case 0:
-        setGames([...defaultGames]);
+        filteredSuggestions.length
+          ? setGames([...filteredSuggestions])
+          : setGames([...defaultGames]);
         break;
+
       // title (accending)
       case 1:
         let newArray1 = [...games];
@@ -92,7 +103,6 @@ const onKeyPress=(e)=>{
         break;
 
       // title (deccending)
-
       case 2:
         let newArray = [...games];
         newArray.sort(function (a, b) {
@@ -107,8 +117,8 @@ const onKeyPress=(e)=>{
         setGames(newArray);
 
         break;
-      // platform
 
+      // platform
       case 3:
         let newArray3 = [...games];
         newArray3.sort(function (a, b) {
@@ -126,7 +136,6 @@ const onKeyPress=(e)=>{
         break;
 
       // score
-
       case 4:
         let newArray4 = [...games];
         newArray4.sort(function (a, b) {
@@ -147,6 +156,7 @@ const onKeyPress=(e)=>{
     }
   };
 
+  // choosing a sort-by
   const handleSortClose = (event) => {
     const { id } = event.target;
     if (id) setSortByValue(SORTBYVALUES[id]);
@@ -168,7 +178,6 @@ const onKeyPress=(e)=>{
     <FilteringContext.Provider
       value={{
         searchTerm,
-        setSearchTerm,
         sortByValue,
         setSortByValue,
         sortOpen,
@@ -177,11 +186,11 @@ const onKeyPress=(e)=>{
         handleSortToggle,
         handleSortClose,
         SORTBYVALUES,
-        onKeyPress,
-        reset,
+        onKeyDown,
         resetSearch,
         filteredSuggestions,
         onTextChange,
+        chooseSuggestion,
       }}
     >
       {children}

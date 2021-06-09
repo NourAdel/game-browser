@@ -6,17 +6,24 @@ import "../Styles/SearchBar.css";
 function SearchBar() {
   const {
     searchTerm,
-    setSearchTerm,
-    onKeyPress,
+    onKeyDown,
     resetSearch,
     filteredSuggestions,
     onTextChange,
-    showSuggestions,
+    chooseSuggestion,
   } = useContext(FilteringContext);
 
   const renderSuggestedItems = () => {
-    return filteredSuggestions.map((item) => {
-      return <h5>{item.title}</h5>;
+    return filteredSuggestions.map((item, index) => {
+      return (
+        <button
+          className="suggestion"
+          onClick={() => chooseSuggestion(item)}
+          key={item.title + index}
+        >
+          <h5>{item.title}</h5>
+        </button>
+      );
     });
   };
   return (
@@ -25,8 +32,8 @@ function SearchBar() {
         <div className="searchBar">
           <input
             onChange={(e) => onTextChange(e.target.value)}
-            onKeyPress={(event) => {
-              onKeyPress(event)
+            onKeyDown={(event) => {
+              onKeyDown(event);
             }}
             placeholder={"Search..."}
             key="input"
@@ -34,16 +41,26 @@ function SearchBar() {
             value={searchTerm}
           />
 
-          {/* clear button */}
           {searchTerm !== "" && (
-            <button
-              className="icon resetIcon"
-              onClick={(e) => {
-                resetSearch();
-              }}
-            >
-              <CloseIcon />
-            </button>
+            <React.Fragment>
+              {/* clear button */}
+              <button
+                className="icon resetIcon"
+                onClick={() => {
+                  resetSearch();
+                }}
+              >
+                <CloseIcon />
+              </button>
+
+              {/* search button for mobile users */}
+              <button
+                className="mobileSearch"
+                onClick={() => onKeyDown({ keyCode: 13 })}
+              >
+                Search
+              </button>
+            </React.Fragment>
           )}
         </div>
 
